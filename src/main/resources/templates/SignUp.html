@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign Up Form</title>
+    <link rel="stylesheet" href="/signup.css">
+</head>
+<body>
+<form method="post" th:action="@{/sign-up}" th:object="${signUpForm}">
+    <input type="text" id="firstName" name="firstName" placeholder="insert your firstName" th:field="*{firstName}" required>
+    <input type="text" id="lastName" name="lastName" placeholder="insert your lastName" th:field="*{lastName}" required>
+    <input type="text" id="email" name="email" placeholder="insert your email" th:field="*{email}" required>
+    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="phoneNumber" th:field="*{phoneNumber}" required>
+    <input type="Date" id="birthdate" name="birthdate" placeholder="insert your Birthdate" th:field="*{birthdate}" required>
+    <select th:field="*{gender}">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+    </select>
+    <input type="password" id="password" name="password" placeholder="Password" th:field="*{password}" required>
+    <button type="submit">Sign-up</button>
+    <p>Already has an account, please <a th:href="@{/login}">Login</a> here</p>
+</form>
+</body>
+</html>

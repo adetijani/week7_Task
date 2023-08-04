@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Facebook clone</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+        body {
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Cabin", Courier, monospace;
+            height: 100vh;
+            margin: 0;
+            padding: 22px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #1264bd;
+        }
+        .hooffer:hover {
+            text-decoration: underline;
+        }
+        .facebook-logo p{
+            color: #f3f3f3;
+        }
+        .input-input{
+            border: none;
+            border-radius: 26px;
+            padding: 2px 10px;
+            font-family: inherit;
+            background: #0f82f2;
+            color: white;
+            outline: none;
+        }
+        .signup-form {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 350px;
+        }
+        h2 {
+            text-align: left;
+            margin-bottom: 0px;
+        }
+        form p{
+            color: dodgerblue;
+            text-align: center;
+        }
+        .main p{
+            color: dodgerblue;
+            text-align: center;
+        }
+        .form-group-birthday {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-wrap {
+            display: flex;
+            gap: 23px;
+        }
+        .adj-frm-grp {
+            width: 40%;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        .sign-in_wrapper h3 {
+            margin: 0;
+        }
+        .sign-in_wrapper {
+            display: flex;
+            margin: 7px 4px;
+        }
+        .sign-in_wrapper span {
+            margin: 3px 4px;
+        }
+        select {
+            margin-right: 6px;
+        }
+        .master-label {
+            display: flex;
+            text-align: center;
+        }
+        button {
+            text-align: center;
+            width: 95%;
+            padding: 10px;
+            background-color: dodgerblue;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button.create-btn{
+            align-items: center;
+            color: white;
+            background-color: dodgerblue;
+        }
+        button:hover {
+            background-color: dodgerblue;
+            transform: scale(1.05);
+        }
+        label input[type="radio"] {
+            margin-right: 5px;
+        }
+        /* Optional: Adjust the form layout for responsiveness */
+        @media (max-width: 480px) {
+            .signup-form {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="main">
+        <div class="left">
+            <img src="fb_logo.svg" alt="facebook" class="logo" />
+            <p>Connect with friends and the world around you on Facebook.</p>
+        </div>
+        <div class="right">
+            <form method="post" th:action="@{/login}" th:object="${login}">
+                <div class="form_body">
+                    <input type="text" name="email" placeholder="Email or Phone Number" />
+                    <input type="password" name="password" placeholder="password" />
+                    <button type="submit">Log in</button>
+                    <p>Forget password?</p>
+                    <hr />
+                    <button class="create-btn">
+                        <a href="./Signup.html">Create new Account</a>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <p th:text="${userMessage}"></p>
+        <p><span>Create a Page</span> for a celebrity, brand, or business.</p>
+    </div>
+</header>
+</body>
+</html>
