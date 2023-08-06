@@ -18,6 +18,9 @@ public class Posts {
     @ManyToOne
     private Users users;
 
-    public Posts(PostsDTO postsDTO) {
-    }
+//    public Posts(PostsDTO postsDTO) {
+//    }
+
+//    public Posts(PostsDTO postsDTO) {
+//    }
 }

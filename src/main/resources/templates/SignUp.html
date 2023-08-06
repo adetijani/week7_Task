@@ -2,10 +2,91 @@
 <html lang="en">
 <head>
     <title>Sign Up Form</title>
-    <link rel="stylesheet" href="/signup.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+
+        body {
+            font-family: inherit;
+            background-color: #0f82f2;
+            display: flex;
+            font-family: "Cabin", Courier, monospace;
+            margin: 0;
+            /*padding: 22px 0;*/
+        }
+        form{
+            margin-top: 160px;
+            margin-left: 300px;
+            height: 68vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 350px;
+        }
+        form input{
+            width: 90%;
+            height: 25px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            border-bottom-color: #1877f2;
+            border-radius: 4px;
+            font-family: inherit
+        }
+        form input::placeholder{
+            color: dodgerblue;
+        }
+        form button{
+            width: 100%;
+            padding: 10px;
+            background-color: #1877f2;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        form button:hover{
+            background-color: #1264bd;
+            transform: scale(1.05);
+        }
+        form a{
+            text-decoration: none;
+            color: #1264bd;
+            cursor: pointer;
+        }
+        form p{
+            text-align: center;
+            font-family: "Apple SD Gothic Neo";
+        }
+        form select{
+            width: 96%;
+            height: 40px;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            border-bottom-color: #1877f2;
+            color: #0f82f2;
+        }
+        .logo h1{
+            margin-left: 30px;
+            color: white;
+            font-size: 50px;
+            /*margin-top: 10px;*/
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
+<div class="logo">
+    <h1>facebook</h1>
+</div>
 <form method="post" th:action="@{/sign-up}" th:object="${signUpForm}">
+    <p>Enter your details here</p>
     <input type="text" id="firstName" name="firstName" placeholder="insert your firstName" th:field="*{firstName}" required>
     <input type="text" id="lastName" name="lastName" placeholder="insert your lastName" th:field="*{lastName}" required>
     <input type="text" id="email" name="email" placeholder="insert your email" th:field="*{email}" required>
@@ -18,7 +99,7 @@
     </select>
     <input type="password" id="password" name="password" placeholder="Password" th:field="*{password}" required>
     <button type="submit">Sign-up</button>
-    <p>Already has an account, please <a th:href="@{/login}">Login</a> here</p>
+    <p>Already has an account,<br> please <a th:href="@{/login}">Login</a> here</p>
 </form>
 </body>
 </html>

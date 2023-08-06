@@ -5,6 +5,7 @@ import com.example.facebookclone.Model.Posts;
 import com.example.facebookclone.Model.Users;
 import com.example.facebookclone.Services.PostService;
 import com.example.facebookclone.Services.UserService;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,13 +32,15 @@ public class PostController {
     }
 
     @PostMapping("/post")
-    public ModelAndView savePost(PostsDTO postDTO){
-        Users user =  userService.findById(postDTO.getUsers().getId());
-        postDTO.setUser(user);
+    public ModelAndView savePost(PostsDTO postDTO, HttpSession session){
+        Users user = (Users) session.getAttribute("users");
+        postDTO.setUsers(user);
+        log.error(String.valueOf(postDTO));
         postService.savePosts(postDTO);
         List<Posts> postList =  postService.findAllPostsByUserId(postDTO.getUsers().getId());
         log.info(" Here is this users post: "+ postList);
-        //TODO: IF ERROR: REMEMBER: -> TO HANDLE WHAT HAPPENS AFTER SUCCESSFUL POSTING
-        return new ModelAndView("WelcomePage").addObject("postList", postList);
+        return new ModelAndView("WelcomePage")
+                .addObject("postList", postList)
+                .addObject("post", new Posts());
     }
 }

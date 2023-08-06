@@ -32,7 +32,7 @@ public class Users {
     private String birthdate;
     @Column(nullable = false)
     private String password;
-//    @Column(nullable = false)
+    @Column(nullable = false)
     private Gender gender;
 
     public Users(SignUpDTO signUpDTO) {

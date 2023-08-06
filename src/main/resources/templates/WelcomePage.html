@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Facebook-like Page</title>
     <link rel="stylesheet" type="text/css" href="./homepage.css">
@@ -7,20 +7,21 @@
 <body>
 <h1>Welcome to Facebook-like Page</h1>
 <form method="post" th:action="@{/post}" th:object="${post}">
-   <label for="post"><textarea th:field="*{content}" id="post" name="post" placeholder="Write your post here..."></textarea></label>
-    <input type="hidden" th:field="*{user.id}">
+    <label for="post"><textarea th:field="*{content}" id="post" name="content" placeholder="Write your post here..."></textarea></label>
+    <!-- Add a hidden field to store the user's ID -->
+<!--    <input type="hidden" th:name="post.users.id" th:value="${post.users.id}" />-->
     <button type="submit">Post</button>
 </form>
-<!--<h2>Posts</h2>-->
-<!--<p th:text="${}"></p>-->
+
+
 <ul>
     <li>
         Post 1: This is the first post.
-        <form th:action="@{/post}" method="post">
+        <form th:action="@{/postlist}" method="post">
             <input type="hidden" name="post_id" value="1" />
             <button type="submit">Like</button>
         </form>
-        <form action="" method="post">
+        <form th:action="@{/}" method="post">
             <input type="hidden" name="post_id" value="1" />
             <input type="text" name="comment_content" placeholder="Write your comment here..." />
             <button type="submit">Comment</button>
