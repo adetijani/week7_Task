@@ -14,22 +14,21 @@
 </form>
 
 
-<ul>
-    <li>
-        Post 1: This is the first post.
-        <form th:action="@{/postlist}" method="post">
-            <input type="hidden" name="post_id" value="1" />
-            <button type="submit">Like</button>
+<form class="postComment" th:action="@{/add-comment}" method="post">
+    <input type="hidden" name="post_id" th:value="${post.id}" />
+    <input type="text" name="comment_content" placeholder="Write your comment here..." />
+    <button type="submit">Comment</button>
+</form>
+
+<ol class="delete">
+    <li th:each="post : ${postList}">
+        <p th:text="${post.content}"></p>
+        <!-- Delete Button for each post -->
+        <form th:action="@{/delete-post}" method="post">
+            <input type="hidden" name="post_id" th:value="${post.id}" />
+            <button type="submit">Delete</button>
         </form>
-        <form th:action="@{/}" method="post">
-            <input type="hidden" name="post_id" value="1" />
-            <input type="text" name="comment_content" placeholder="Write your comment here..." />
-            <button type="submit">Comment</button>
-        </form>
-        <ul>
-            <li class="comment">User1: This is a comment.</li>
-        </ul>
     </li>
-</ul>
+</ol>
 </body>
 </html>
